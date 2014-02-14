@@ -1,0 +1,8 @@
+{
+  "packages": {
+    "router": {},
+    "underscore-inflection": {},
+    "moment": {},
+    "accounting": {}
+  }
+}

@@ -1,0 +1,17 @@
+<template name="customers">
+	
+	{{#if checkCurrentModule "customers"}}
+		
+		<div class="panel widget">
+			
+			{{#if currentAction}}
+				{{> customers_view}}
+			{{else}}
+				{{> customers_list}}
+			{{/if}}
+			
+		</div>
+		
+	{{/if}}
+	
+</template>

@@ -1,0 +1,22 @@
+<template name="customers_infoWindow">
+	
+	{{#if record}}
+	<div id="info-window" class="panel panel-default">
+		<div class="panel-heading">{{record.name}}</div>
+		
+		<div class="panel-body">
+			
+			<div class="col-xs-10">
+				{{record.address}}<br/>
+				{{record.city}}, {{record.state}} {{record.zip}}<br/>
+				{{record.phone}}
+			</div>
+			
+			<div class="col-xs-2 pull-right">
+				<button id="show_customer" class="btn btn-success btn-sm pull-right">View Customer</button>
+			</div>
+			
+		</div>
+	</div>
+	{{/if}}
+</template>

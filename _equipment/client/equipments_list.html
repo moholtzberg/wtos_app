@@ -1,0 +1,31 @@
+<template name="equipments_list">
+
+	<table class="table table-hover">
+		
+		<thead>
+			<tr>
+				<th>Active</th>
+				<th>Name</th>
+				<th class="hidden-xs">Address</th>
+				<th class="hidden-xs">Phone</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			{{#each record}}
+			<tr href="/customers/{{_id}}/" class="record {{#if checkCurrentModule 'customers'}}{{#if checkCurrentId _id}}active{{/if}}{{/if}}" id="customer_{{_id}}" record_id="{{_id}}" data-target="tab_view" data-toggle="tab">
+				<td><i class="fa fa-{{#if active}}check-circle text-success{{else}}times-circle text-danger{{/if}} fa-fw"></i></td>
+				<td>{{name}}</td>
+				<td class="hidden-xs">{{address}}</td>
+				<td class="hidden-xs">{{phone}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+		
+	</table>
+	
+	<div class="footer">
+		<button id="new_equipment" class="btn btn-primary btn-sm">New Equipment</button>
+	</div>
+	
+</template>

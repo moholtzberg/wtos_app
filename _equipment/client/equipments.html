@@ -1,0 +1,17 @@
+<template name="equipments">
+	
+	{{#if checkCurrentModule "equipments"}}
+		
+		<div class="panel widget">
+			
+			{{#if currentAction}}
+				{{> equipments_view}}
+			{{else}}
+				{{> equipments_list}}
+			{{/if}}
+			
+		</div>
+		
+	{{/if}}
+	
+</template>

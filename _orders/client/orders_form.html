@@ -1,0 +1,142 @@
+<template name="orders_form">
+	
+	<fieldset>	
+		
+		<div id="customer_id" class="form-group col-sm-6">
+			<label>Customer</label>
+			<select id="order_customer_id" name="customer_id" value="{{record.customer_id}}" class="form-control input-sm">
+				{{#each customers}}
+				<option value="{{_id}}">{{name}}</option>
+				{{/each}}
+			</select>
+		</div>
+		
+		<div id="user_id" class="form-group col-sm-6">
+			<label>User</label>
+			<select id="order_user_id" name="user_id" value="{{record.user_id}}" class="form-control input-sm">
+				{{#each users}}
+				<option value="{{_id}}">{{fullName}}</option>
+				{{/each}}
+			</select>
+		</div>
+		
+		<div id="description" class="form-group col-sm-6">
+			<label>Description</label>
+			<input type="text" id="description" name="description" value="{{record.description}}" class="form-control input-sm">
+		</div>
+		
+		<div id="po_number" class="form-group col-sm-3">
+			<label>PO Number</label>
+			<input type="text" id="po_number" name="po_number" value="{{record.po_number}}" class="form-control input-sm">
+		</div>
+		
+		<div id="date" class="form-group col-sm-3">
+			<label>Date</label>
+			<input type="text" id="date" name="date" value="{{record.date}}" class="form-control input-sm">
+		</div>
+		
+	</fieldset>
+	
+	<div class="alert alert-info info-widget">
+		Margin: %{{margin}} <br/>
+		Profit: {{profit}}
+	</div>
+	
+	<div class="panel panel-default">
+		
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#misc_info">Misc Information</a>
+			</h4>
+		</div>
+		
+		<div id="misc_info" class="panel-collapse collapse">
+			
+			<div class="panel-body">
+					
+					<div id="eda" class="form-group col-md-6">
+						<label>EDA Number</label>
+						<input type="text" id="eda_number" name="eda_number" value="{{record.eda_number}}" class="form-control input-sm">
+					</div>
+					
+					<div id="duns" class="form-group col-md-6">
+						<label>DUNS Number</label>
+						<input type="text" id="duns_number" name="duns_number" value="{{record.duns_number}}" class="form-control input-sm">
+					</div>
+				
+			</div>
+			
+		</div>
+	</div>
+	
+	<fieldset>	
+		
+		<table class="table table-condensed">
+			<tr>
+				<td><strong>Item</strong></td>
+				<td><span class="pull-right"><strong>Price</strong></span></td>  
+				<td><span class="pull-right"><strong>Quantity</strong></span></td>
+				<td><span class="pull-right"><strong>Total</strong></span></td>
+			</tr>
+			{{#if record}}
+				{{#each record.lines}}
+				<tr>
+					<td>{{item.number}}</td>
+					<td><span class="pull-right">${{price}}</span></td>  
+					<td><span class="pull-right">${{quantity}}</span></td>
+					<td><span class="pull-right">${{total}}</span></td>
+				</tr>
+				{{/each}}
+			{{else}}
+				{{#each lineItems}}
+				<tr>
+					<td>{{item.number}}</td>
+					<td><span class="pull-right">${{price}}</span></td>  
+					<td><span class="pull-right">---{{quantity}}</span></td>
+					<td><span class="pull-right">${{total}}</span></td>
+				</tr>
+				{{/each}}
+			{{/if}}
+			<tr>
+				<td></td>
+				<td></td>  
+				<td>Total</td>
+				<td><span class="pull-right"><strong>{{subTotal}}</strong></span></td>
+			</tr>
+		</table>
+		
+		<input type="hidden" id="order_id" name="order_id" value="record._id">
+		
+		<div id="quantity" class="form-group col-md-1">
+			<label>Quantity</label>
+			<input type="text" id="quantity" name="quantity" class="form-control input-sm">
+		</div>
+		
+		<div id="item_id" class="form-group col-md-4">
+			<label>Item</label>
+			<select id="item_id" name="item_id" class="form-control input-sm">
+				<option>Select an Item</option>
+				{{#each items}}
+				<option value="{{_id}}" id="{{_id}}">{{number}}</option>
+				{{/each}}
+			</select>
+		</div>
+		
+		<div id="cost" class="form-group col-md-3">
+			<label>Cost</label>
+			<input type="text" id="cost" name="cost" class="form-control input-sm">
+		</div>
+		
+		<div id="price" class="form-group col-md-3">
+			<label>Price</label>
+			<input type="text" id="price" name="price" class="form-control input-sm">
+		</div>
+		
+		<div class="form-group col-md-1">
+			<label>Add</label>
+			<a id="add_item" class="btn" name="add_item">+</a>
+		</div>
+		
+	</fieldset>
+	
+</template>

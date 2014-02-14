@@ -1,0 +1,50 @@
+<template name="equipments_view">
+{{#if currentAction}}
+	
+	{{#if checkCurrentAction "new"}}
+		{{> equipments_form}}
+	{{else}}
+	
+	{{#isolate}}
+	
+	<ul class="nav nav-tabs hidden-xs">
+		<li {{#if checkCurrentAction "view"}}class="active"{{/if}}>
+			<a href="/customers/{{record._id}}#view" data-target="#" class="subModule" id="view" data-toggle="tab">View / Edit</a>
+		</li>
+		<li {{#if checkCurrentAction "leases"}}class="active"{{/if}}>
+			<a href="/customers/{{record._id}}#leases" data-target="#" class="subModule" id="leases" data-toggle="tab">Leases</a>
+		</li>
+	</ul>
+	
+	<select class="visible-xs">
+		<opiton {{#if checkCurrentAction "view"}}class="active"{{/if}}>
+			<a href="/customers/{{record._id}}#view" data-target="#" class="subModule" id="view" data-toggle="tab">View / Edit</a>
+		</option>
+		<option {{#if checkCurrentAction "leases"}}class="active"{{/if}}>
+			<a href="/customers/{{record._id}}#leases" data-target="#" class="subModule" id="leases" data-toggle="tab">Leases</a>
+		</option>
+	</select>
+	
+	{{/isolate}}
+	
+	{{#isolate}}
+	<div class="tab-content">
+		<br />
+		{{#unless checkCurrentAction "view"}}
+			{{{subModule record}}}
+		{{else}}
+			{{> equipments_form}}
+		{{/unless}}
+	<div>
+	{{/isolate}}
+	
+	{{/if}}
+		
+{{/if}}	
+
+	<div class="footer">
+		<a id="cancel" class="btn btn-sm btn-warning cancel">Cancel</a>
+		<button type="submit" form="save_customer" id="save_customer" class="btn btn-primary btn-sm save">Save Equipment</button>
+	</div>
+		
+</template>

@@ -1,0 +1,40 @@
+<template name="orders">
+	
+	{{#if checkCurrentModule "orders"}}
+		
+		<div class="panel widget container">
+			<!-- <div class="col-md-4"> -->
+				<!-- <p> -->
+					<div class="col-md-4">
+						<i class="fa fa-square text-info fa-lg"></i> <i class="fa fa-info-circle fa-lg"></i><code> = Items are available to ship</code><br/>
+						<i class="fa fa-square text-warning fa-lg"></i> <i class="fa fa-minus-circle fa-lg"></i><code> = Items are on Backorder</code><br/>
+						<i class="fa fa-square text-primary fa-lg"></i> <i class="fa fa-plus-circle fa-lg"></i><code> = Items were Shipped</code><br/>
+						<i class="fa fa-square text-success fa-lg"></i> <i class="fa fa-check-circle fa-lg"></i><code> = Items were Fulfilled</code>
+					</div>
+					
+					<div class="col-md-4 text-center hidden-xs">
+						
+					</div>
+					
+					<div class="col-md-4 text-right hidden-xs">
+					
+					</div>
+				<!-- </p> -->
+			<!-- </div> -->
+			
+			
+		</div>
+		
+		<div class="panel widget">
+			
+			{{#if currentAction}}
+				{{> orders_view}}
+			{{else}}
+				{{> orders_list}}
+			{{/if}}
+			
+		</div>
+		
+	{{/if}}
+	
+</template>
