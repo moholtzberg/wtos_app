@@ -3,7 +3,7 @@ Meteor.Router.add('/messages/incoming', 'POST', function() {
 	var params = this.request.body.toString();
 	var a = JSON.stringify(params);
 	// var b = JSON.parse(params)
-	console.log(a)
+	console.log(params)
 	// Messages.update({_id: params.message_id}, {$set: {delivered: {status: true, time_stamp: new Date()}}});
 	console.log("============================");
 });
