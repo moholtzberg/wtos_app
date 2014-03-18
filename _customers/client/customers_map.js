@@ -1,8 +1,5 @@
 Template.customers_map.rendered = function() {
 	
-
-		
-		
 			if (!this.rendered) {
 			$("#map-canvas").height("400px");
 
@@ -38,8 +35,9 @@ Template.customers_map.rendered = function() {
 					
 					Customers.find().forEach(function(customer) {
 
-						if (customer.loc != null) {
+						// if (customer.loc != null) {
 							var geo = customer.geoLocation();
+							console.log(customer.name() + "  >>>  " + geo.lat + ":" + geo.lng)
 							var marker = new google.maps.Marker({
 								position: new google.maps.LatLng(geo.lat, geo.lng),
 								title: customer.name(),
@@ -54,7 +52,7 @@ Template.customers_map.rendered = function() {
 								// infowindow.open(map,marker);
 							});
 
-						} 
+						// } 
 
 					});
 

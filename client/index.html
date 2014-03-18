@@ -33,16 +33,15 @@
 			<span class="icon-bar"></span>
 		</button>
 		
+		<button id="logout" type="button" class="btn btn-sm btn-warning pull-right">
+			<i class="fa fa-fw fa-sign-out"></i>Sign Out
+		</button>
+		
 	</div>
 	
-	<div id="clearTop" class="clearfix"></div>
+	<div id="clearTop" class="clearfix hidden-xs hidden-sm"></div>
 	
 	<div id="main-panel" class="col-md-12">
-		
-		<ol class="breadcrumb">
-			<li><a href="#">{{currentModule}}</a></li>
-			<li><a href="#">{{currentAction}}</a></li>
-		</ol>
 
 		{{#isolate}}
 			{{renderPage}}

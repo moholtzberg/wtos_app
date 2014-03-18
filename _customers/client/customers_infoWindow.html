@@ -7,13 +7,22 @@
 		<div class="panel-body">
 			
 			<div class="col-xs-10">
-				{{record.address}}<br/>
-				{{record.city}}, {{record.state}} {{record.zip}}<br/>
-				{{record.phone}}
+				<div class="col-xs-4">
+					{{record.address}}<br/>
+					{{record.city}}, {{record.state}} {{record.zip}}<br/>
+					{{record.phone}}
+				</div>
+				
+				<div class="col-xs-4">
+					{{record.equipments.length}} pieces of equipment<br/>
+					on {{record.leases.length}} lease/'s<br/>
+					has {{record.contacts.length}} contacts<br/>
+				</div>
+				
 			</div>
 			
 			<div class="col-xs-2 pull-right">
-				<button id="show_customer" class="btn btn-success btn-sm pull-right">View Customer</button>
+				<a href="/customers/{{record._id}}/" id="customer_{{record._id}}" record_id="{{record._id}}" class="btn btn-success btn-sm pull-right page record">View Customer</a>
 			</div>
 			
 		</div>

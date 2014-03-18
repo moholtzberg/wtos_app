@@ -92,12 +92,9 @@ Customer.prototype = {
 	geoLocation: function() {
 		var self = this;
 		self.updateGeoLocation();
-		
 		if (self.loc) {
 			return self.loc
-		} else {
-			return {lat: 0.0, lng: 0.0}
-		};
+		}
 	},
 	
 	updateGeoLocation: function() {
@@ -190,27 +187,9 @@ Customers.allow({
 	
 	update: function() {
 		return true;
+	},
+	
+	remove: function() {
+		return true;
 	}
-});
-
-Meteor.startup( function(){
-	// c = Customers.find();
-	// for (var i=0; i < c.length; i++) {
-	// 	Customers.remove(c[i]._id);
-	// };
-	Meteor.call("getCustomers", function(e, r){
-		if (!e) {
-			a = JSON.parse(r);
-			for (var i=0; i < a.length; i++) {
-				cust = Customers.findOne( {"dg_info.CustomerID": a[i].CustomerID} )
-				if (cust) {
-					if (cust.dg_info.LastUpdate < a[i].LastUpdate || !cust.dg_info.LastUpdate) {
-						Customers.update({_id: cust._id}, {$set: {dg_info: a[i]}})
-					};
-				} else {
-					Customers.insert( {dg_info: a[i]} )};
-				};
-			};
-		
-	});
 });

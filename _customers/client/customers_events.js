@@ -53,9 +53,11 @@ Template.customers.events({
 		
 		push_to_dg = $("input#push_to_dg").attr("checked");
 		form = extractFromValues();
+		console.log(form)
 		dg = buildDGValues(form);
+		console.log(dg)
 		customer = Session.get("recordId") == null ? Customers.insert({}) : Customers.findOne(Session.get("recordId"))._id;
-		
+		console.log(customer)
 		if (push_to_dg) {
 			var newCustomer = !Customers.findOne(customer).dg_info ? true : false
 			
@@ -96,7 +98,7 @@ Template.customers.events({
 		Session.set("page", event.currentTarget.id);
 	},
 
-	'click tr.record': function(event, template) {
+	'click .record': function(event, template) {
 		customer_id = $("#" + event.currentTarget.id.toString()).attr("record_id");
 		Meteor.Router.to("/customers/" + customer_id);
 		Session.set("currentAction", "view");

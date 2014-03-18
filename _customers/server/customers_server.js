@@ -37,22 +37,32 @@ Meteor.methods({
 		};
 	}
 	
-	
-	
 });
 
 Meteor.publish("Customers", function() {
 	return Customers.find();
 });
 
-
-
-// Meteor.startup(function(){
-// 	v = Meteor.call("getCustomers");
-// 	v = JSON.parse(v);
-// 	if (v.length > Customers.find().count() ) {
-// 		for (var i=0; i < Things.length; i++) {
-// 			Customers.insert(Things[i])
-// 		};
-// 	};
-// });
+Meteor.startup( function(){
+	console.log("=======> stating up")
+	Meteor.call("getCustomers", function(e, r){
+		console.log("=======> getting customers")
+		if (!e) {
+			console.log("=======> no errors getting customers")
+			a = JSON.parse(r);
+			console.log("=======> " + a.length + " customers found")
+			for (var i=0; i < a.length; i++) {
+				cust = Customers.findOne( {"dg_info.CustomerID": a[i].CustomerID} )
+				if (cust) {
+					console.log("=======> " + cust.dg_info.CustomerID + " found in db, with _id of " + cust._id)
+					if (cust.dg_info.LastUpdate < a[i].LastUpdate || !cust.dg_info.LastUpdate) {
+						Customers.update({_id: cust._id}, {$set: {dg_info: a[i]}})
+					};
+				} else {
+					console.log("=======> " + a[i].CustomerID + " not found in db")
+					Customers.insert( {dg_info: a[i]} )};
+				};
+			};
+		
+	});
+});
