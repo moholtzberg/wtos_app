@@ -3,7 +3,7 @@ Meteor.Router.add('/messages/incoming', 'POST', function() {
 	var params = this.request.body;
 	var a = JSON.stringify(params["stripped-text"]);
 	// var b = JSON.parse(params)
-	console.log(b)
+	console.log(a)
 	// Messages.update({_id: params.message_id}, {$set: {delivered: {status: true, time_stamp: new Date()}}});
 	console.log("============================");
 });
