@@ -8,7 +8,7 @@ Meteor.Router.add('/messages/incoming', 'POST', function() {
 	console.log("============================");
 });
 
-Meteor.Router.add('/messages/jabber', 'POST', function() {
+Meteor.Router.add('/messages/jabber', 'GET', function() {
 	console.log("======================ROUTER - JABBER");
 	console.log(this.request);
 	var params = this.request.body;
