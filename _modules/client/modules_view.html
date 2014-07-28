@@ -1,0 +1,21 @@
+<template name="modules_view">
+
+{{#if currentAction}}
+	
+	{{#if checkCurrentAction "new"}}
+		<form id="save_module" class="row" role="form">
+			{{> modules_form}}
+		</form>
+	{{else}}
+	
+		{{#unless checkCurrentAction "view"}}
+			{{{subModule record}}}
+		{{else}}
+			{{> modules_form}}
+		{{/unless}}
+
+	{{/if}}
+	
+{{/if}}
+
+</template>

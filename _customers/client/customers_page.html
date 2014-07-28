@@ -1,0 +1,52 @@
+<template name="customers_page">
+		
+	<div class="panel-heading">
+		<h4>{{record.name}}
+		
+			<span class="pull-right">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default btn-sm"><i class="fa fa-fw fa-edit"></i></button>
+					<button type="button" class="btn btn-default btn-sm"><i class="fa fa-fw fa-times"></i></button>
+				</div>
+			</span>
+		</h4>
+	</div>
+	
+	<div class="panel-body">
+		
+		<div class="row">
+			
+			<div class="col-md-6">
+				<p>
+				{{record.address}}<br/>
+				{{record.city}}, {{record.state}} {{record.zip}}<br/>
+				T {{record.phone}}<br/>
+				F {{record.fax}}
+				</p>
+			</div>
+
+			<div class="col-md-6">
+				<div id="mapWrapper">
+					{{#constant}}
+					<div id="customer-view-map"></div>
+					{{/constant}}
+				</div>
+			</div>
+			
+		</div>
+		
+		<hr/>
+		
+		<strong>Digital Gateway Customer Number:</strong> {{record.dg_info.CustomerNumber}}<br/>
+		<strong>EDA Record Number:</strong> {{record.eda_number}}<br/>
+		<strong>DUNS Number:</strong> {{record.duns_number}}
+		
+		<hr/>
+		
+		<button id="contacts" class="btn btn-primary subModule">Contacts {{record.contacts.length}}</button>
+		<button id="leases" class="btn btn-primary subModule">Leases {{record.leases.length}}</button>
+		<button id="equipments" class="btn btn-primary subModule">Equipments {{record.equipments.length}}</button>
+		
+	</div>
+	
+</template>

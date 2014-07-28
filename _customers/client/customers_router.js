@@ -30,6 +30,7 @@ Meteor.Router.add({
 		if (selectedModule) {
 			Session.set("currentModule", selectedModule.slug);
 			Session.set("currentAction", null);
+			// UI.render(selectedModule.slug);
 			return selectedModule.slug
 		};
 	}

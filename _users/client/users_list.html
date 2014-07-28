@@ -1,5 +1,28 @@
 <template name="users_list">
-	{{#each records}}
-	<a href="/users/{{_id}}/" class="record list-group-item {{#if checkCurrentModule 'users'}}{{#if checkCurrentId _id}}active {{/if}}{{/if}}" id="user_{{_id}}" user_id="{{_id}}" data-target="tab_view" data-toggle="tab">{{full_name}}</a>
-	{{/each}}
+	
+	<table class="table table-hover">
+		
+		<thead>
+			<tr>
+				
+				<th>Name</th>
+				<th>Is Admin</th>
+				<th>Active</th>
+				<th class="hidden-xs">Email</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			{{#each records}}
+			<tr href="/users/{{_id}}/" class="record {{#if checkCurrentModule 'users'}}{{#if checkCurrentId _id}}active{{/if}}{{/if}}" id="user_{{_id}}" record_id="{{_id}}" data-target="tab_view" data-toggle="tab">
+				<td>{{full_name}}</td>
+				<td class="hidden-xs"> <i class="fa fa-{{#if is_admin}}check-circle text-success{{else}}times-circle text-danger{{/if}} fa-fw"></i></td>
+				<td class="hidden-xs"> <i class="fa fa-{{#if active}}check-circle text-success{{else}}times-circle text-danger{{/if}} fa-fw"></i></td>
+				<td class="hidden-xs">{{profile.email}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+		
+	</table>
+	
 </template>

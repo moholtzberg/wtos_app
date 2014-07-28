@@ -1,0 +1,29 @@
+<template name="leases_stub">
+	
+	{{#if record.leases}}
+
+		{{#each record.leases}}
+
+		<div class="col-md-3">
+			
+			<div class="panel widget">
+				
+				<div class="panel-heading">
+					<h4>Leases Stub</h4>
+				</div>
+
+				<div class="panel-body">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+					<br/>
+					<a href="leases/{{this._id}}" class="btn btn-sm btn-primary">View {{this.number}}</a>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		{{/each}}
+
+	{{/if}}	
+	
+</template>

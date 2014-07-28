@@ -1,0 +1,47 @@
+<template name="modules">
+	{{#if checkCurrentModule "modules"}}
+		
+		<div class="col-sm-12 col-md-6">
+			
+			<div class="panel widget">
+				
+				{{#isolate}}
+					{{> modules_list}}
+				{{/isolate}}
+				
+				<div class="footer">
+					<button id="new_module" class="btn btn-primary btn-sm">New Module</button>
+				</div>
+
+			</div>
+			
+		</div>
+		
+		{{#if currentAction}}
+		
+		<div class="col-sm-12 col-md-6">
+			
+			<div class="panel widget">
+				
+				{{#if checkCurrentAction "new"}}
+				<form id="save_module">
+					{{> modules_form}}
+				</form>
+				{{else}}
+					{{> modules_view}}
+				{{/if}}
+				
+				<div class="footer">
+					<a id="cancel" class="btn btn-sm btn-warning cancel">Cancel</a>
+					<button type="submit" form="save_module" id="save_module" class="btn btn-primary btn-sm save">Save Module</button>
+				</div>
+
+			</div>
+			
+		</div>
+		
+		{{/if}}
+		
+	{{/if}}
+	
+</template>

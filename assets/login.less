@@ -1,0 +1,31 @@
+@display-md-min:    ~"only screen and (min-width: 992px)";
+@display-md-max:    ~"only screen and (max-width: 992px)";
+@display-sm-min:    ~"only screen and (min-width: 768px)";
+@display-sm-max:    ~"only screen and (max-width: 768px)";
+@navMenuWidth: 250px;
+
+#login-panel {
+	height: 100%;
+	background-color: #e0e0e0;
+	@media @display-sm-min {
+		margin-left: -@navMenuWidth;
+		padding-top: 60px;
+	}
+	@media @display-sm-max {
+		margin-left: 0;
+		padding-top: 60px;
+	}
+}
+
+#login {
+	background-color: #fff;
+	margin-top: 0;
+}
+
+#login > .row {
+	margin: 0;
+}
+
+#login-form > fieldset > .row {
+	margin: 0;
+}

@@ -1,0 +1,27 @@
+<template name="customers">
+	
+	{{#if checkCurrentModule "customers"}}
+		
+		<div class="col-md-12">
+			
+			<div class="panel widget">
+
+				{{#if currentAction}}
+					{{> customers_page}}
+				{{else}}
+					{{> customers_list}}
+				{{/if}}
+
+			</div>
+			
+		</div>
+			
+		{{#unless checkCurrentAction "view"}}
+
+			{{{subModule record}}}
+
+		{{/unless}}
+		
+	{{/if}}
+	
+</template>

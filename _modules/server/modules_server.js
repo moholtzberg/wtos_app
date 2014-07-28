@@ -19,6 +19,10 @@ Modules.allow({
 		return userId === doc.user_id;
 	},
 	update: function (userId, doc) {
-		return userId === doc.user_id;
+		if (Users.findOne(userId).profile.is_admin) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 });

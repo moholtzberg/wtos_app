@@ -86,7 +86,11 @@
 					<div id="push_to_dg" class="form-group col-md-6">
 						<div class="checkbox">
 							<label>
-								<input type="checkbox" id="push_to_dg" name="push_to_dg"{{#if record.dg_info}}checked{{/if}}>
+								{{#if record.is_admin}}
+								<input type="checkbox" id="push_to_dg" name="push_to_dg" checked>
+								{{else}}
+								<input type="checkbox" id="push_to_dg" name="push_to_dg">
+								{{/if}}
 								Push to e-Automate
 							</label>
 						</div>

@@ -1,0 +1,37 @@
+<template name="customers_view">
+{{#if currentAction}}
+	
+	{{#if checkCurrentAction "new"}}
+		{{> customers_form}}
+	{{else}}
+	
+	<ul class="nav nav-tabs hidden-xs">
+		<li class={{checkCurrentAction "view"}}>
+			<a href="/customers/{{record._id}}#view" data-target="#" class="subModule" id="view" data-toggle="tab">View / Edit</a>
+		</li>
+		
+	</ul>
+
+	<div class="tab-content">
+		<br />
+		{{#unless checkCurrentAction "view"}}
+			{{{subModule record}}}
+		{{else}}
+			{{#if checkCurrentAction "edit"}}
+				{{> customers_form}}
+			{{else}}
+				{{> customers_page}}
+			{{/if}}
+		{{/unless}}
+	</div>
+	
+	{{/if}}
+		
+{{/if}}	
+
+	<div class="footer">
+		<a id="cancel" class="btn btn-sm btn-warning cancel">Cancel</a>
+		<button type="submit" form="save_customer" id="save_customer" class="btn btn-primary btn-sm save">Save Customer</button>
+	</div>
+		
+</template>

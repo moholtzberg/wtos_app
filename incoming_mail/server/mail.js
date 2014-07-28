@@ -8,17 +8,6 @@ Meteor.Router.add('/messages/incoming', 'POST', function() {
 	console.log("============================");
 });
 
-Meteor.Router.add('/messages/jabber', 'GET', function() {
-	console.log("======================ROUTER - JABBER");
-	console.log(this.request);
-	var params = this.request.body;
-	// var a = JSON.stringify(params["stripped-text"]);
-	// var b = JSON.parse(params)
-	// console.log(a)
-	// Messages.update({_id: params.message_id}, {$set: {delivered: {status: true, time_stamp: new Date()}}});
-	console.log("============================");
-});
-
 // Meteor.Router.add('/messages/open', 'POST', function() {
 // 	console.log("======================ROUTER - OPN");
 // 	var params = this.request.body;
